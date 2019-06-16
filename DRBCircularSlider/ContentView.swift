@@ -26,7 +26,7 @@ struct ContentView : View {
                 
             }
             ZStack {
-                DRBCircSlider(size: 300.0, stroke: 15.0, initial: 135.0, value: $Slidervalue3)
+                DRBCircSlider(size: 300.0, stroke: 20.0, initial: 135.0, value: $Slidervalue3)
                 Text(String(format: "%.2f",self.Slidervalue3))
                 
             }
@@ -82,7 +82,8 @@ struct DRBCircSlider : View {
                 // Background track. We should make this less in your face
                 Path { path in
                     path.addArc(center: center, radius: radius, startAngle: Angle(degrees: 0.0), endAngle: Angle(degrees: 360.0), clockwise: false)
-                    }.stroke(Color.gray, lineWidth: 4.0)
+                    }.stroke(Color.gray, lineWidth: 2.0)
+                    .opacity(0.25)
                 // The main track showing the current value
                 Path { path in
                     path.addArc(center: center, radius: radius, startAngle: Angle(degrees: -90.0), endAngle: Angle(degrees: handleAngle.degrees + 90.0), clockwise: false)
