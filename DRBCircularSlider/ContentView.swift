@@ -86,7 +86,7 @@ struct DRBCircSlider : View {
                 // The main track showing the current value
                 Path { path in
                     path.addArc(center: center, radius: radius, startAngle: Angle(degrees: -90.0), endAngle: Angle(degrees: handleAngle.degrees + 90.0), clockwise: false)
-                    }.stroke(Color.blue, lineWidth: stroke)
+                    }.stroke(Color.blue, style: StrokeStyle(lineWidth: stroke, lineCap: .round))
                 // The handle
                 Path { path in
                     path.addArc(center: CGPoint(x: handlePos.x, y: handlePos.y), radius: stroke, startAngle: Angle(degrees: 0.0), endAngle: Angle(degrees: 360.0), clockwise: true)
