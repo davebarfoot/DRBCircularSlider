@@ -1,14 +1,14 @@
 # DRBCircularSlider
 
 BEWARE: This is me learning/experimenting with SwiftUI and Swift at the same time.
-I fully expect to have to refactor this code as I realise the mistakes I've made.
+I fully expect to have to refactor this code as I realize the mistakes I've made.
 
 It's fairly rough and ready at the moment and I'm actively fiddling with it
 
 ## Some basic info
 
 * It treats 0 degrees as top center of the circle
-* By default, the vaule returned is 0.0-359.9.
+* By default, the value returned is 0.0-359.9.
 * Start angle and end angle are specified by absolute degree angles
 * You can specify the size of the control. A single value used for both width and height
 * You can specify the stroke width for the indicator track
@@ -33,5 +33,5 @@ If it gets to a point where I've happy with it, I'll turn it into a package
 Feel free to use it if you think it might be useful to you. An attribution might
 be nice if you use it in anything published.
 
-Dave Barfoot
-209-06-17
+Dave Barfoot  
+2019-06-17
