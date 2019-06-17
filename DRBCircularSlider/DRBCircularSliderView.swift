@@ -15,14 +15,23 @@ struct DRBCircularSlider : View {
     @State private var handlePos: CGPoint = CGPoint(x:0, y:0)
     @State var size: CGFloat
     @State var stroke: CGFloat
+    @State var indicatorColor: Color = .blue
+    @State var handleColor: Color = .red
     @State var initial: Double
-    @State var startAngle: Double
-    @State var endAngle: Double
+    @State var startAngle: Double = 0.0
+    @State var endAngle: Double = 360.0
+    @State var minValue: Double = 0.0
+    @State var maxValue: Double = 360.0
     @Binding var value: Double
     
     func calcValue() {
-        self.value = self.handleAngle.degrees + 180.0
-        print("value: \(value)")
+        let nativeValue = self.handleAngle.degrees + 180.0
+        let nativeRange = endAngle-startAngle
+        let targetRange = maxValue-minValue
+
+        value = (((nativeValue - startAngle) * targetRange) / nativeRange ) + minValue
+
+        print("value: \(value) native:\(nativeValue)")
     }
     
     func findAngleCentreToPoint(center: CGPoint, selected: CGPoint) -> Angle {
@@ -82,11 +91,11 @@ struct DRBCircularSlider : View {
                 // The main track showing the current value
                 Path { path in
                     path.addArc(center: center, radius: radius, startAngle: Angle(degrees: startAngle-90.0), endAngle: Angle(degrees: handleAngle.degrees + 90.0), clockwise: false)
-                    }.stroke(Color.blue, style: StrokeStyle(lineWidth: stroke, lineCap: .round))
+                    }.stroke(indicatorColor, style: StrokeStyle(lineWidth: stroke, lineCap: .round))
                 // The handle
                 Path { path in
                     path.addArc(center: CGPoint(x: handlePos.x, y: handlePos.y), radius: stroke, startAngle: Angle(degrees: 0.0), endAngle: Angle(degrees: 360.0), clockwise: true)
-                    }.fill(Color.red)
+                    }.fill(handleColor)
             }
             }
             .frame(width: size, height: size, alignment: .center)
@@ -114,6 +123,7 @@ struct DRBCircularSlider : View {
                 // take a pixel each side for safety - this needs revisiting
                 self.radius = (self.size/2.0) - (self.stroke) - 2.0
                 // Convert std 0deg at top range to what the system uses
+                if(self.initial<self.minValue) { self.initial=self.minValue }
                 self.handleAngle = Angle(degrees: self.initial - 180.0)
                 // Function to turn machine angle back to 0deg at top for human use
                 self.calcValue()
