@@ -18,11 +18,18 @@ struct DRBCircularSlider : View {
     @State var initial: Double
     @State var startAngle: Double
     @State var endAngle: Double
+    @State var minValue: Double = 0.0
+    @State var maxValue: Double = 360.0
     @Binding var value: Double
     
     func calcValue() {
-        self.value = self.handleAngle.degrees + 180.0
-        print("value: \(value)")
+        let nativeValue = self.handleAngle.degrees + 180.0
+        let nativeRange = (endAngle-startAngle) * 1000.0
+        let targetRange = (maxValue-minValue) * 1000.0
+
+        value = (targetRange/nativeRange) * nativeValue
+
+        print("value: \(value) native:\(nativeValue)")
     }
     
     func findAngleCentreToPoint(center: CGPoint, selected: CGPoint) -> Angle {
