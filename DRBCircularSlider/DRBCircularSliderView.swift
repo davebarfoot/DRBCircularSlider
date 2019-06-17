@@ -16,6 +16,8 @@ struct DRBCircularSlider : View {
     @State var size: CGFloat
     @State var stroke: CGFloat
     @State var initial: Double
+    @State var startAngle: Double
+    @State var endAngle: Double
     @Binding var value: Double
     
     func calcValue() {
@@ -27,18 +29,39 @@ struct DRBCircularSlider : View {
         var sideOpp: Double, sideAdj: Double
         var a: Double
         var r: Angle
+        var ta: Double, ts: Double, te: Double
         
         sideAdj = Double(selected.x)
         sideOpp = Double(selected.y)
         a = atan2(sideAdj, sideOpp)
         r = Angle(radians: -a)
-        r.degrees = r.degrees
+        
+        // Ensure we are positive for ease of calculations - A kludge for now
+        ta = r.degrees + 360.0
+        ts = startAngle + 360.0 - 180.0
+        te = endAngle + 360.0 - 180.0
+        
+        if (ta < ts) { r.degrees = startAngle - 180.0 }
+        if (ta > te) { r.degrees = endAngle - 180.0 }
+        
         return r
     }
     
     func findPositionOnCircumference(radius: CGFloat, angle: Angle) -> CGPoint {
         var x,y: CGFloat
-        let a = Angle(degrees: angle.degrees + 90.0)
+        var ta: Double, ts: Double, te: Double
+        var a = Angle(degrees: angle.degrees + 90.0)
+        
+        // Ensure we are positive for ease of calculations - A kludge for now
+        ta = a.degrees + 360.0
+        ts = startAngle + 360.0 - 90.0
+        te = endAngle + 360.0 - 90.0
+        
+        if (ta < ts) { a.degrees = startAngle - 90.0 }
+        
+        if (ta > te) { a.degrees = endAngle - 90.0 }
+        
+        print("a: \(ta) start: \(ts) end: \(te)")
         
         
         x = (radius * cos(CGFloat(a.radians))) + center.x
@@ -53,12 +76,12 @@ struct DRBCircularSlider : View {
             ZStack {
                 // Background track. We should make this less in your face
                 Path { path in
-                    path.addArc(center: center, radius: radius, startAngle: Angle(degrees: 0.0), endAngle: Angle(degrees: 360.0), clockwise: false)
+                    path.addArc(center: center, radius: radius, startAngle: Angle(degrees: startAngle-90.0), endAngle: Angle(degrees: endAngle-90.0), clockwise: false)
                     }.stroke(Color.gray, lineWidth: 2.0)
                     .opacity(0.25)
                 // The main track showing the current value
                 Path { path in
-                    path.addArc(center: center, radius: radius, startAngle: Angle(degrees: -90.0), endAngle: Angle(degrees: handleAngle.degrees + 90.0), clockwise: false)
+                    path.addArc(center: center, radius: radius, startAngle: Angle(degrees: startAngle-90.0), endAngle: Angle(degrees: handleAngle.degrees + 90.0), clockwise: false)
                     }.stroke(Color.blue, style: StrokeStyle(lineWidth: stroke, lineCap: .round))
                 // The handle
                 Path { path in
