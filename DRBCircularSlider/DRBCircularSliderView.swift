@@ -13,11 +13,11 @@ struct DRBCircularSlider : View {
     @State private var radius: CGFloat = 0.0
     @State private var handleAngle: Angle = Angle(degrees: 0.0)
     @State private var handlePos: CGPoint = CGPoint(x:0, y:0)
-    @State var size: CGFloat
-    @State var stroke: CGFloat
+    @State var size: CGFloat = 150.0
+    @State var stroke: CGFloat = 10.0
     @State var indicatorColor: Color = .blue
     @State var handleColor: Color = .red
-    @State var initial: Double
+    @State var initial: Double = 0.0
     @State var startAngle: Double = 0.0
     @State var endAngle: Double = 360.0
     @State var minValue: Double = 0.0
