@@ -7,7 +7,7 @@ It's fairly rough and ready at the moment and I'm actively fiddling with it
 
 ## Some Examples
 
-![DRBCircularSlider Example](https://raw.github.com/davebarfoot/DRBCircularSlider/resources/DRBCircularSliderExample1.jpg)
+![alt tag](https://github.com/davebarfoot/DRBCircularSlider/raw/master/resources/DRBCircularSliderExample1.jpg)
  - DRBCircularSlider with various parameters altered
 
 ## Some basic info
