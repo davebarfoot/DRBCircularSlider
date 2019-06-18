@@ -31,7 +31,9 @@ struct DRBCircularSlider : View {
 
         value = (((nativeValue - startAngle) * targetRange) / nativeRange ) + minValue
 
-        print("value: \(value) native:\(nativeValue)")
+        #if DEBUG
+        print("Return - value: \(value) native:\(nativeValue)")
+        #endif
     }
     
     func findAngleCentreToPoint(center: CGPoint, selected: CGPoint) -> Angle {
@@ -70,12 +72,16 @@ struct DRBCircularSlider : View {
         
         if (ta > te) { a.degrees = endAngle - 90.0 }
         
-        print("a: \(ta) start: \(ts) end: \(te)")
+        #if DEBUG
+        print("HandlePos In - a: \(ta) start: \(ts) end: \(te)")
+        #endif
         
         
         x = (radius * cos(CGFloat(a.radians))) + center.x
         y = (radius * sin(CGFloat(a.radians))) + center.y
-        print("radius: \(radius) x: \(x) y: \(y)")
+        #if DEBUG
+        print("HandlePos Out- radius: \(radius) x: \(x) y: \(y)")
+        #endif
         
         return CGPoint(x: x,y: y)
     }
@@ -103,12 +109,13 @@ struct DRBCircularSlider : View {
                 // Deal with dragging the handle
                 DragGesture(minimumDistance: 1)
                     .onChanged() { v in
-                        //print("x: \(v.location.x) y: \(v.location.y)")
+                        #if DEBUG
+                        print("Mouse Pos - x: \(v.location.x) y: \(v.location.y)")
+                        #endif
                         // Find the angle between our touch point and the center of the circle
                         self.handleAngle = self.findAngleCentreToPoint(center: self.center, selected: CGPoint(x: v.location.x-self.center.x, y: v.location.y-self.center.y))
                         // Turn that andle into a user facing value
                         self.calcValue()
-                        //print("drag angle: \(self.handleAngle.degrees) value: \(self.value)")
                         // Use the angle to find out where to draw the handle and update the circles on screen
                         self.handlePos=self.findPositionOnCircumference(radius: self.radius, angle: self.handleAngle)
                         //self.calcValue()
