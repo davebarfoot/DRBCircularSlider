@@ -5,6 +5,11 @@ I fully expect to have to refactor this code as I realize the mistakes I've made
 
 It's fairly rough and ready at the moment and I'm actively fiddling with it
 
+## Some Examples
+
+![DRBCircularSlider Example](https://raw.github.com/davebarfoot/DRBCircularSlider/resources/DRBCircularSliderExample1.jpg)
+ - DRBCircularSlider with various parameters altered
+
 ## Some basic info
 
 * It treats 0 degrees as top center of the circle
