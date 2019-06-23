@@ -489,13 +489,13 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 69H53MEM65;
-				INFOPLIST_FILE = DRBCircSliderTests/Info.plist;
+				INFOPLIST_FILE = DRBCircularSliderTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.davebarfoot.DRBCircSliderTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.davebarfoot.DRBCircularSliderTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -510,13 +510,13 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 69H53MEM65;
-				INFOPLIST_FILE = DRBCircSliderTests/Info.plist;
+				INFOPLIST_FILE = DRBCircularSliderTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.davebarfoot.DRBCircSliderTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.davebarfoot.DRBCircularSliderTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -530,17 +530,17 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 69H53MEM65;
-				INFOPLIST_FILE = DRBCircSliderUITests/Info.plist;
+				INFOPLIST_FILE = DRBCircularSliderUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.davebarfoot.DRBCircSliderUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.davebarfoot.DRBCircularSliderUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = DRBCircSlider;
+				TEST_TARGET_NAME = DRBCircularSlider;
 			};
 			name = Debug;
 		};
@@ -550,17 +550,17 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 69H53MEM65;
-				INFOPLIST_FILE = DRBCircSliderUITests/Info.plist;
+				INFOPLIST_FILE = DRBCircularSliderUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.davebarfoot.DRBCircSliderUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.davebarfoot.DRBCircularSliderUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = DRBCircSlider;
+				TEST_TARGET_NAME = DRBCircularSlider;
 			};
 			name = Release;
 		};

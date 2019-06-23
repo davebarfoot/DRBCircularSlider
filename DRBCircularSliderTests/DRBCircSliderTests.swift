@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import DRBCircSlider
+@testable import DRBCircularSlider
 
 class DRBCircSliderTests: XCTestCase {
 
