@@ -1,10 +1,26 @@
 # DRBCircularSlider
 
-BEWARE: This is me learning/experimenting with SwiftUI and Swift at the same time.
-I fully expect to have to refactor this code as I realize the mistakes I've made.
+*BEWARE: This is me learning/experimenting with SwiftUI and Swift at the same time.
+I fully expect to have to refactor this code as I realize the mistakes I've made.*
 
-It's fairly rough and ready at the moment, but getting better I think
-(and I AM actively fiddling with it)
+I have now got this code to a point where I am reasonably happy to start using it.
+
+This doesn't mean there isn't lots about it I think needs changing, and the way a
+few things are implemented feel not quite right, but will need some more thought
+and learning so I don't lurch from one bad implementation ot another.
+
+When the time presents itself, I will document this better and turn it into a
+package.
+
+For now, the code is in DRBCircularSliderViewData and DRBCircularSliderView.swift
+and example of how to instantiate it are in ContentView.swift.
+
+Color changes dependant on the value are set in the onAppear and I'm not sure I
+won't change that at some point. At the moment the color changes *must* be specified
+in ascending order if you want them to work as you'd expect. I hope to fix that
+at some point. The color used below the first color change value is that set for
+the indicator color.
+
 
 ## Some Examples
 
@@ -23,14 +39,13 @@ It's fairly rough and ready at the moment, but getting better I think
 * You can specify the initial value of the indicator
 * You can specify the min value and max value of a new output range
 * You can set the initial value at any point programmatically to update the slider
+* You can add color change value/color entries via a function call in onAppear
 * You can also set any of the above parameters at any time
 
 ## Where Are We Going
 
-* I would like to be able to change the color of the indicator track based on the selected value
 * I would like the make the indicator track/handle a bit more nuanced colorwize.
 * I feel the handle size is good for smaller stroke widths, but looks unwieldy at larger sizes
-* I suspect I should be using a GeometryReader. I'm going to investigate soon.
 
 If it gets to a point where I've happy with it, I'll turn it into a package
 
@@ -38,4 +53,4 @@ Feel free to use it if you think it might be useful to you. An attribution might
 be nice if you use it in anything published.
 
 Dave Barfoot  
-2019-06-19
+2019-06-28
