@@ -29,7 +29,7 @@ class DRBCircularSliderData: BindableObject {
   var value: Double = 0.0 { didSet { update() } }
   var colors: [ColorChange] = [] { didSet { update() } }
   
-  var useColor: Color = Color.blue { didSet { didChange.send(()) } }
+  var useColor: Color = Color.blue
   
   // Initialize everything, all with a default so parameters can
   // be left out. Don't try changing the order though.
@@ -109,7 +109,7 @@ class DRBCircularSliderData: BindableObject {
       }
     }
   }
-  
+
   func findAngleCentreToPoint(center: CGPoint, selected: CGPoint) -> Angle {
     var sideOpp: Double, sideAdj: Double
     var a: Double
