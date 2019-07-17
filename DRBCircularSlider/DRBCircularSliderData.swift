@@ -10,7 +10,8 @@ import Combine
 import SwiftUI
 
 class DRBCircularSliderData: BindableObject {
-  var didChange = PassthroughSubject<Void, Never>()
+  
+  var willChange = PassthroughSubject<Void, Never>()
   
   // All the data with defaults
   var center = CGPoint(x: 0.0,y: 0.0) { didSet { update() } }
@@ -91,7 +92,7 @@ class DRBCircularSliderData: BindableObject {
   // Calculate color changes required and tell the Views it's time to redraw
   func update() {
     chooseColor()
-    didChange.send(())
+    willChange.send(())
   }
   
   func chooseColor() {
