@@ -48,7 +48,7 @@ class DRBCircularSliderData: BindableObject {
        minValue: Double = 0.0,
        maxValue: Double = 360.0,
        value: Double = 0.0
-    )
+  )
   {
     self.center = center
     self.radius = radius
@@ -91,8 +91,11 @@ class DRBCircularSliderData: BindableObject {
   
   // Calculate color changes required and tell the Views it's time to redraw
   func update() {
-    chooseColor()
-    willChange.send(())
+    DispatchQueue.main.async {
+      self.willChange.send()
+      self.chooseColor()
+    }
+    
   }
   
   func chooseColor() {
@@ -110,7 +113,7 @@ class DRBCircularSliderData: BindableObject {
       }
     }
   }
-
+  
   func findAngleCentreToPoint(center: CGPoint, selected: CGPoint) -> Angle {
     var sideOpp: Double, sideAdj: Double
     var a: Double
