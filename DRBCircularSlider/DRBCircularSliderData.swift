@@ -14,21 +14,21 @@ class DRBCircularSliderData: BindableObject {
   var willChange = PassthroughSubject<Void, Never>()
   
   // All the data with defaults
-  var center = CGPoint(x: 0.0,y: 0.0) { didSet { update() } }
-  var radius: CGFloat = 0.0 { didSet { update() } }
-  var handleAngle: Angle = Angle(degrees: 0.0) { didSet { update() } }
-  var handlePos: CGPoint = CGPoint(x:0, y:0) { didSet { update() } }
-  var size: CGFloat = 150.0 { didSet { reInit() } }
-  var stroke: CGFloat = 10.0 { didSet { reInit() } }
-  var indicatorColor: Color = .blue { didSet { reInit() } }
-  var handleColor: Color = .red { didSet { reInit() } }
-  var initial: Double = 0.0 { didSet { reInit() } }
-  var startAngle: Double = 0.0 { didSet { reInit() } }
-  var endAngle: Double = 360.0 { didSet { reInit() } }
-  var minValue: Double = 0.0 { didSet { reInit() } }
-  var maxValue: Double = 360.0 { didSet { reInit() } }
-  var value: Double = 0.0 { didSet { update() } }
-  var colors: [ColorChange] = [] { didSet { update() } }
+    var center = CGPoint(x: 0.0,y: 0.0) { willSet { willUpdate() } didSet { update() } }
+  var radius: CGFloat = 0.0 { willSet { willUpdate() } didSet { update() } }
+  var handleAngle: Angle = Angle(degrees: 0.0) { willSet { willUpdate() } didSet { update() } }
+  var handlePos: CGPoint = CGPoint(x:0, y:0) { willSet { willUpdate() } didSet { update() } }
+  var size: CGFloat = 150.0 { willSet { willUpdate() } didSet { reInit() } }
+  var stroke: CGFloat = 10.0 { willSet { willUpdate() } didSet { reInit() } }
+  var indicatorColor: Color = .blue { willSet { willUpdate() } didSet { reInit() } }
+  var handleColor: Color = .red { willSet { willUpdate() } didSet { reInit() } }
+  var initial: Double = 0.0 { willSet { willUpdate() } didSet { reInit() } }
+  var startAngle: Double = 0.0 { willSet { willUpdate() } didSet { reInit() } }
+  var endAngle: Double = 360.0 { willSet { willUpdate() } didSet { reInit() } }
+  var minValue: Double = 0.0 { willSet { willUpdate() } didSet { reInit() } }
+  var maxValue: Double = 360.0 { willSet { willUpdate() } didSet { reInit() } }
+  var value: Double = 0.0 { willSet { willUpdate() } didSet { update() } }
+  var colors: [ColorChange] = [] { willSet { willUpdate() } didSet { update() } }
   
   var useColor: Color = Color.blue
   
@@ -50,6 +50,10 @@ class DRBCircularSliderData: BindableObject {
        value: Double = 0.0
   )
   {
+    // Tell SwiftUI we are going to update
+    // Not sure how to make sure this happens before the update cactually happens here
+    willUpdate()
+    
     self.center = center
     self.radius = radius
     self.handleAngle = handleAngle
@@ -86,17 +90,22 @@ class DRBCircularSliderData: BindableObject {
     
     // Find where to draw the handle at startup
     self.handlePos=findPositionOnCircumference(radius: self.radius, angle: self.handleAngle)
+
     update();
   }
   
-  // Calculate color changes required and tell the Views it's time to redraw
-  func update() {
-    DispatchQueue.main.async {
-      self.willChange.send()
-      self.chooseColor()
+    // Calculate color changes required and tell the Views it's time to redraw
+    func willUpdate() {
+        DispatchQueue.main.async {
+            self.willChange.send()
+        }
     }
-    
-  }
+    func update() {
+        DispatchQueue.main.async {
+            self.chooseColor()
+        }
+        
+    }
   
   func chooseColor() {
     if(colors.count == 0 ) {
