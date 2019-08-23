@@ -10,8 +10,8 @@ import Combine
 import SwiftUI
 
 struct DRBCircularSlider : View {
-  // You need to pass in an ObjectBinding instance of a DRBCircularSliderData class
-  @ObjectBinding var data: DRBCircularSliderData
+  // You need to pass in an ObservedObject instance of a DRBCircularSliderData class
+  @ObservedObject var data: DRBCircularSliderData
   
   var body: some View {
     VStack {
