@@ -60,8 +60,8 @@ struct ContentView : View {
         Text(String(self.sv1.svalue))
         
         }.onAppear() {
-          self.sv1.colors.append(DRBCircularSliderData.ColorChange(value: 65.0, color: Color.red))
-          self.sv1.colors.append(DRBCircularSliderData.ColorChange(value: 95.0, color: Color.purple))
+          self.sv1.colors.append(DRBCircularSliderData.ColorChange(value: 120.0, color: Color.red))
+          self.sv1.colors.append(DRBCircularSliderData.ColorChange(value: 190.0, color: Color.purple))
             self.sv3.colors.append(DRBCircularSliderData.ColorChange(value: 13.0, color: Color.pink))
       }
       
