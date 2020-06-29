@@ -72,21 +72,22 @@ struct ContentView : View {
             ZStack {
                 DRBCircularSlider(data: sv1)
                 Text(String(self.sv1.svalue))
-        }.onAppear() {
-          self.sv1.colors.append(DRBCircularSliderData.ColorChange(value: 120.0, color: Color.red))
-          self.sv1.colors.append(DRBCircularSliderData.ColorChange(value: 190.0, color: Color.purple))
-            self.sv3.colors.append(DRBCircularSliderData.ColorChange(value: 13.0, color: Color.pink))
-      }
-      
-      // We can set the initial value at any time to update the current state of the slider
-      Button(action: {
-        self.sv1.initial = Double(180.0)
-        self.sv1.indicatorColor =  .red
-        self.sv2.initial = Double(180.0)
-        self.sv2.indicatorColor = .green
-        self.sv3.initial = Double(180.0)
-        self.sv3.indicatorColor = .blue
-      }) { Text("180") }
+            }.onAppear() {
+                self.sv1.colors.append(DRBCircularSliderData.ColorChange(value: 120.0, color: Color.red))
+                self.sv1.colors.append(DRBCircularSliderData.ColorChange(value: 190.0, color: Color.purple))
+                self.sv3.colors.append(DRBCircularSliderData.ColorChange(value: 13.0, color: Color.pink))
+            }
+            
+            // We can set the initial value at any time to update the current state of the slider
+            Button(action: {
+                self.sv1.initial = Double(180.0)
+                self.sv1.indicatorColor =  .red
+                self.sv2.initial = Double(180.0)
+                self.sv2.indicatorColor = .green
+                self.sv3.initial = Double(180.0)
+                self.sv3.indicatorColor = .blue
+            }) { Text("180") }
+        }
     }
 }
 
